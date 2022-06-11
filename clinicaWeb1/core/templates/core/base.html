@@ -3,6 +3,9 @@
 
 <head>
     {% load static %}
+    {% block css %}
+    {% endblock %}
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- ESTILOS CSS -->
     <link rel="stylesheet" href="{% static 'core/'%}css/styles.css" type="text/css">
+    <link rel="stylesheet" href="{% static 'core/'%}css/intento.css" type="text/css">
     <!-- API GEOLOCALIZACION -->
     <script>
         $(document).ready(function () {
@@ -46,64 +50,43 @@
     <title>ONG ANIMALITOS</title>
 </head>
 
-    <!-----HEADER O ENCABEZADO----->
-    <div id="encabezado" class="container">
-        <nav class="navbar navbar-light bg-light px-3">
-            <a class="navbar-brand" href="index.html"><img src="{% static 'core/'%}img/img/fotos index/yitiar.png" alt=""
-                    class="img-logo mr-2">Perritos ONG</a>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscar productos...." aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link" href="./intento.html">Registrarse</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./productos.html">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./quienessomos.html">Quienes somos</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <br>
 
-    <!-- PANEL DE CONTROL-->
- <!-- PANEL DE CONTROL-->
- <div class="container">
-    <!-- API CLIMA -->
-    <div id="cuenta" class="row">
-        <div class="row col-2">
-            <h2>OBSERVE EL CLIMA</h2>
-            <input type="text" name="city" id="city" placeholder="Ingrese una ciudad">
-            <button type="button" class="btn btn-primary" id="enviar">Traer datos</button>
+    <body>
+        <!-----HEADER O ENCABEZADO----->
+        <div id="encabezado" class="container">
+            <nav class="navbar navbar-light bg-light px-3">
+                <a class="navbar-brand" href="index.html"><img src="{% static 'core/'%}img/img/fotos index/yitiar.png" alt=""
+                        class="img-logo mr-2">Perritos ONG</a>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Buscar productos...." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+    
+                <div id="nave" class="nave">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'inscripcion' %}">Registrarse</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'productos' %}">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'quienessomos' %}">Quienes somos</a>
+                        </li>
+                    </ul>
+                </div>
+                    <div id="cuenta" class="row">
+                        <div id="borde1" class="col-1">
+                            <img src="{% static 'core/'%}img/img/fotos index/usuario.png" alt="">
+                            <a class="nav-link" href="#">Tu cuenta</a>
+                        </div>
+                        <div id="borde2" class="col-1">
+                            <img src="{% static 'core/'%}img/img/fotos index/carrito-de-compras.png" alt="">
+                            <a class="nav-link" href="#">Tu carrito</a>
+                        </div>
+                </div>
+            </nav>
         </div>
-        <div class="col-8">
-            <table class="table" id="categorias">
-                <thead>
-                    <tr>
-                        <th scope="col">Ubicacion</th>
-                        <th scope="col">Temperatura</th>
-                        <th scope="col">Velocidad viento</th>
-                        <th scope="col">Humedad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <div id="borde1" class="col-1">
-            <img src="{% static 'core/'%}img/img/fotos index/usuario.png" alt="">
-            <a class="nav-link" href="#">Tu cuenta</a>
-        </div>
-        <div id="borde2" class="col-1">
-            <img src="{% static 'core/'%}img/img/fotos index/carrito-de-compras.png" alt="">
-            <a class="nav-link" href="#">Tu carrito</a>
-        </div>
-    </div>
-</div>
 <br>
     {% block contenido %} 
     {% endblock %}
